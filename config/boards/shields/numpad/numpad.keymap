@@ -1,0 +1,42 @@
+/* numpad.keymap */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        /* KATMAN 0: Varsayılan Kullanım
+           Sağ sütun (Del, Home, End...) standart işlevinde.
+           Parantezler: ( ve {
+        */
+        default_layer {
+            bindings = <
+                &tg 1      &kp FSLH   &kp STAR   &kp DEL
+                &kp N7     &kp N8     &kp N9     &kp HOME
+                &kp N4     &kp N5     &kp N6     &kp END
+                &kp N1     &kp N2     &kp N3     &kp PG_UP
+                &kp N0     &kp LPAR   &kp LBRC   &kp PG_DN
+            >;
+        };
+
+        /* KATMAN 1: Medya ve Sistem Ayarları
+           Num Lock'a basınca burası aktif olur.
+           
+           Sol taraf: Sizin özel düzeniniz (Oklar ve Ses).
+           Sağ taraf (4. Sütun): Zorunlu sistem ayarları.
+        */
+        media_layer {
+            bindings = <
+                &tg 1           &kp DQT      &kp SEMI        &bootloader
+                &kp C_PREV      &kp C_PP     &kp C_NEXT      &sys_reset
+                &kp C_VOL_UP    &kp UP       &kp C_VOL_DN    &bt BT_CLR
+                &kp LEFT        &kp DOWN     &kp RIGHT       &bt BT_PRV
+                &trans          &kp RPAR     &kp RBRC        &bt BT_NXT
+            >;
+        };
+    };
+};
